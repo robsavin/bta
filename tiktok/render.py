@@ -26,6 +26,8 @@ def shot_frame(s, t):
     a = min(max((t - s["t"][0]) / (s["t"][1] - s["t"][0]), 0), 1); a = a*a*(3-2*a)
     lerp = lambda p: p[0] + (p[1]-p[0]) * a
     z = lerp(s["zoom"]); ch = ih / z; cw = ch * W / H
+    if cw > iw: cw = iw; ch = cw * H / W  # art slightly narrower than 9:16
+    if ch > ih: ch = ih; cw = ch * W / H
     cx = lerp(s["x"]) * iw; cy = lerp(s["y"]) * ih
     cx = min(max(cx, cw/2), iw - cw/2); cy = min(max(cy, ch/2), ih - ch/2)
     return im.resize((W, H), Image.BICUBIC, box=(cx-cw/2, cy-ch/2, cx+cw/2, cy+ch/2))
