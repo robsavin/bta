@@ -1,0 +1,4 @@
+out/
+assets/
+clips/*/audio.*
+__pycache__/
