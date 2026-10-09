@@ -2,3 +2,4 @@ out/
 assets/
 clips/*/audio.*
 __pycache__/
+share/
